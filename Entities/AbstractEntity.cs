@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Menagelec.Entities
 {
-    abstract class AbstractEntity
+    abstract protected class AbstractEntity
     {
         public void hydrate()
-        {
-        
-        }
+        {}
     }
 }
