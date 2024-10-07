@@ -16,6 +16,7 @@ namespace Menagelec.Entities
         private double _price;
         private string _imageFilePath;
 
+        public Product() {}
 
         public int getId() { return this._id; }
 

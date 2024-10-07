@@ -18,6 +18,8 @@ namespace Menagelec.Entities
         private string _city;
         private string _address;
 
+        public Client(){}
+
         public int getId() { return this._id; }
         
 

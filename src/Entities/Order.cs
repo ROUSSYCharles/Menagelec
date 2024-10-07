@@ -9,14 +9,17 @@ namespace Menagelec.Entities
     public class Order : AbstractEntity
     {
         private readonly int _id;
-        private DateTime _date;
+        private readonly DateTime _date;
         private List<OrderRow> _orderRows = new List<OrderRow>();
-        private bool _isPayed;
-        private bool _isExpedited;
+        private bool _isPayed = false;
+        private bool _isExpedited = false;
         private Client _client;
-       
+
+        public Order(){}
 
         public int getId() { return this._id; }
+
+        public DateTime getDate() { return this._date;}
        
 
         public List<OrderRow> getOrderRows() { return this._orderRows; }

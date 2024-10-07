@@ -12,6 +12,8 @@ namespace Menagelec.Entities
         private Product _product;
         private int _quantity;
 
+        public OrderRow(){}
+
         public Order getOrder() { return this._order; }
         public OrderRow setOrder(Order order)
         {
