@@ -53,6 +53,7 @@
             btn_orders.Size = new Size(73, 67);
             btn_orders.TabIndex = 4;
             btn_orders.UseVisualStyleBackColor = true;
+            btn_orders.Click += btn_orders_Click;
             // 
             // fmMenu
             // 
@@ -62,6 +63,7 @@
             ClientSize = new Size(333, 327);
             Controls.Add(btn_orders);
             Controls.Add(lb_orders);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "fmMenu";
             Text = "Menagelec - Menu";

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Menagelec.Entities
 {
-    public class OrderRow : AbstractEntity
+    public class OrderRow : AbstractEntity<OrderRow>
     {
         private Order? _order;
         private Product? _product;

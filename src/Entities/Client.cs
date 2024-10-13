@@ -6,22 +6,26 @@ using System.Threading.Tasks;
 
 namespace Menagelec.Entities
 {
-    public class Client : AbstractEntity
+    public class Client : AbstractEntity<Client>
     {
-        private readonly int _id;
+        private int _id;
         private string _civility;
         private string _lastName;
         private string _name;
         private string _email;
         private string _phone;
-        private int _postalCode;
+        private string _postalCode;
         private string _city;
         private string _address;
 
         public Client(){}
 
         public int getId() { return this._id; }
-        
+        public Client setId(int id)
+        {
+            this._id = id;
+            return this;
+        }
 
         public string getCivility() { return this._civility; }
         public Client setCivility(string civility)
@@ -58,9 +62,9 @@ namespace Menagelec.Entities
             return this;
         }
 
-        public int getPostalCode() { return this._postalCode;}
-        public Client setPostalCode(int postalCode)
-        {
+        public string getPostalCode() { return this._postalCode;}
+        public Client setPostalCode(string postalCode)
+        {   
             this._postalCode = postalCode;
             return this;
         }

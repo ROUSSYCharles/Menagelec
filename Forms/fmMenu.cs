@@ -16,5 +16,17 @@ namespace Menagelec.Forms
         {
             InitializeComponent();
         }
+
+        private void FmMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_orders_Click(object sender, EventArgs e)
+        {
+            fmOrders formOrders = new fmOrders();
+            formOrders.Show();
+            this.Hide();
+        }
     }
 }

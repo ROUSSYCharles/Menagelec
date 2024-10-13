@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Menagelec.Entities
 {
-    public class Order : AbstractEntity
+    public class Order : AbstractEntity<Order>
     {
-        private readonly int _id;
-        private readonly DateTime _date;
+        private int _id;
+        private DateTime _date;
         private List<OrderRow> _orderRows = new List<OrderRow>();
         private bool _isPayed = false;
         private bool _isExpedited = false;
@@ -18,8 +18,18 @@ namespace Menagelec.Entities
         public Order(){}
 
         public int getId() { return this._id; }
+        public Order setId(int id)
+        {
+            this._id = id;
+            return this;
+        }
 
         public DateTime getDate() { return this._date;}
+        public Order setDate(DateTime date)
+        {
+            this._date = date;
+            return this;
+        }
        
 
         public List<OrderRow> getOrderRows() { return this._orderRows; }

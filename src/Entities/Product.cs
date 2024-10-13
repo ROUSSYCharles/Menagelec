@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Menagelec.Entities
 {
-    public class Product : AbstractEntity
+    public class Product : AbstractEntity<Product>
     {
         private readonly int _id;
         private string _designation;
