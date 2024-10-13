@@ -24,8 +24,13 @@ namespace Menagelec.Forms
             DataTable orderDataTable = createOrderDt(allOrders);
             this.ordersDataGridView.DataSource = orderDataTable;
             lb_orderCount.Text = $"Nombre d'éléments :   {allOrders.Count()}";
-        }
+            // groupBox_client
+            ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
+            this.getOrderClientInformations();
 
+        }
+        
+        // Créer DataTable pour les commandes en fonction d'une liste selon le filtre
         private DataTable createOrderDt(List<Order> ordersList)
         {
             DataTable orderDataTable = new DataTable();
@@ -40,6 +45,21 @@ namespace Menagelec.Forms
             return orderDataTable;
         }
 
+        // Obtenir les informations du client de la commande sélectionnée
+        private void getOrderClientInformations()
+        {
+            Order selectedOrder = OrderModel.findOrderById(int.Parse(this.ordersDataGridView.CurrentCell.Value.ToString()));
+            groupBox_client.Text = $"client {selectedOrder.getClient().getId()}";
+            lb_civility.Text = selectedOrder.getClient().getCivility();
+            lb_lastName.Text = selectedOrder.getClient().getLastName();
+            lb_name.Text = selectedOrder.getClient().getName();
+            lb_address.Text = selectedOrder.getClient().getAddress();
+            lb_postalCode.Text = selectedOrder.getClient().getPostalCode();
+            lb_city.Text = selectedOrder.getClient().getCity();
+            lb_client_email.Text = selectedOrder.getClient().getEmail();
+            lb_client_phone.Text = selectedOrder.getClient().getPhone();
+        }
+
         private void FmOrders_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -49,6 +69,12 @@ namespace Menagelec.Forms
         {
             this.ordersDataGridView.DefaultCellStyle.SelectionBackColor = Color.OrangeRed;
             this.ordersDataGridView.DefaultCellStyle.SelectionForeColor = Color.White;
+            // Lorsque la cellule d'une commande est cliqué
+            if (ordersDataGridView.CurrentCell.ColumnIndex == 0 ) 
+            {
+                // On remplit la groupBox_client
+                this.getOrderClientInformations();
+            }
         }
 
         private void checkBox_all_CheckedChanged(object sender, EventArgs e)
@@ -61,6 +87,9 @@ namespace Menagelec.Forms
                 DataTable orderDataTable = createOrderDt(allOrders);
                 this.ordersDataGridView.DataSource = orderDataTable;
                 lb_orderCount.Text = $"Nombre d'éléments :   {allOrders.Count()}";
+                ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
+
+                this.getOrderClientInformations();
             }
         }
 
@@ -82,6 +111,9 @@ namespace Menagelec.Forms
                 DataTable orderToPayDt = createOrderDt(allOrdersToPay);
                 this.ordersDataGridView.DataSource = orderToPayDt;
                 lb_orderCount.Text = $"Nombre d'éléments :   {allOrdersToPay.Count()}";
+                ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
+
+                this.getOrderClientInformations();
             }
         }
 
@@ -103,6 +135,9 @@ namespace Menagelec.Forms
                 DataTable orderToPayDt = createOrderDt(allOrdersToSend);
                 this.ordersDataGridView.DataSource = orderToPayDt;
                 lb_orderCount.Text = $"Nombre d'éléments :   {allOrdersToSend.Count()}";
+                ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
+
+                this.getOrderClientInformations();
             }
         }
     }

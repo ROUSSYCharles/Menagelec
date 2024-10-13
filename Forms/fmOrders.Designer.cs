@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmOrders));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             lb_title = new Label();
             ordersDataGridView = new DataGridView();
             lb_orderCount = new Label();
@@ -37,125 +38,178 @@
             checkBox_toPay = new CheckBox();
             checkBox_toSend = new CheckBox();
             lb_selectedOrderInfo = new Label();
+            groupBox_client = new GroupBox();
+            lb_client_phone = new Label();
+            lb_phone_title = new Label();
+            lb_client_email = new Label();
+            lb_mail_title = new Label();
+            lb_city = new Label();
+            lb_postalCode = new Label();
+            lb_address = new Label();
+            lb_name = new Label();
+            lb_lastName = new Label();
+            lb_civility = new Label();
             ((System.ComponentModel.ISupportInitialize)ordersDataGridView).BeginInit();
+            groupBox_client.SuspendLayout();
             SuspendLayout();
             // 
             // lb_title
             // 
-            lb_title.AutoSize = true;
+            resources.ApplyResources(lb_title, "lb_title");
             lb_title.BackColor = Color.Transparent;
-            lb_title.Font = new Font("Microsoft Sans Serif", 14.25F);
             lb_title.ForeColor = SystemColors.ControlLightLight;
-            lb_title.Location = new Point(363, 9);
             lb_title.Name = "lb_title";
-            lb_title.Size = new Size(220, 24);
-            lb_title.TabIndex = 0;
-            lb_title.Text = "Gestion des commandes";
             // 
             // ordersDataGridView
             // 
             ordersDataGridView.AllowUserToAddRows = false;
             ordersDataGridView.AllowUserToDeleteRows = false;
+            ordersDataGridView.AllowUserToOrderColumns = true;
             ordersDataGridView.AllowUserToResizeColumns = false;
             ordersDataGridView.AllowUserToResizeRows = false;
             ordersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ordersDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             ordersDataGridView.BorderStyle = BorderStyle.Fixed3D;
             ordersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ordersDataGridView.Location = new Point(12, 141);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 8F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.OrangeRed;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            ordersDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(ordersDataGridView, "ordersDataGridView");
             ordersDataGridView.MultiSelect = false;
             ordersDataGridView.Name = "ordersDataGridView";
             ordersDataGridView.ReadOnly = true;
             ordersDataGridView.RowHeadersVisible = false;
             ordersDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            ordersDataGridView.Size = new Size(299, 488);
-            ordersDataGridView.TabIndex = 1;
             ordersDataGridView.CellClick += ordersDataGridView_CellClick;
             // 
             // lb_orderCount
             // 
-            lb_orderCount.AutoSize = true;
+            resources.ApplyResources(lb_orderCount, "lb_orderCount");
             lb_orderCount.BackColor = Color.Transparent;
-            lb_orderCount.Font = new Font("Microsoft Sans Serif", 8.25F);
             lb_orderCount.ForeColor = SystemColors.ControlLightLight;
-            lb_orderCount.Location = new Point(12, 123);
             lb_orderCount.Name = "lb_orderCount";
-            lb_orderCount.Size = new Size(115, 13);
-            lb_orderCount.TabIndex = 2;
-            lb_orderCount.Text = "Nombre d'éléments :    ";
             // 
             // lb_orderList
             // 
-            lb_orderList.AutoSize = true;
+            resources.ApplyResources(lb_orderList, "lb_orderList");
             lb_orderList.BackColor = Color.Transparent;
-            lb_orderList.Font = new Font("Microsoft Sans Serif", 12F);
             lb_orderList.ForeColor = SystemColors.ControlLightLight;
-            lb_orderList.Location = new Point(74, 47);
             lb_orderList.Name = "lb_orderList";
-            lb_orderList.Size = new Size(164, 20);
-            lb_orderList.TabIndex = 3;
-            lb_orderList.Text = "Liste des commandes";
             // 
             // checkBox_all
             // 
-            checkBox_all.AutoSize = true;
+            resources.ApplyResources(checkBox_all, "checkBox_all");
             checkBox_all.BackColor = Color.Transparent;
             checkBox_all.Checked = true;
             checkBox_all.CheckState = CheckState.Checked;
             checkBox_all.ForeColor = SystemColors.ControlLightLight;
-            checkBox_all.Location = new Point(44, 92);
             checkBox_all.Name = "checkBox_all";
-            checkBox_all.Size = new Size(49, 19);
-            checkBox_all.TabIndex = 4;
-            checkBox_all.Text = "Tout";
             checkBox_all.UseVisualStyleBackColor = false;
             checkBox_all.CheckedChanged += checkBox_all_CheckedChanged;
             // 
             // checkBox_toPay
             // 
-            checkBox_toPay.AutoSize = true;
+            resources.ApplyResources(checkBox_toPay, "checkBox_toPay");
             checkBox_toPay.BackColor = Color.Transparent;
             checkBox_toPay.ForeColor = SystemColors.ControlLightLight;
-            checkBox_toPay.Location = new Point(118, 92);
             checkBox_toPay.Name = "checkBox_toPay";
-            checkBox_toPay.Size = new Size(66, 19);
-            checkBox_toPay.TabIndex = 5;
-            checkBox_toPay.Text = "A payer";
             checkBox_toPay.UseVisualStyleBackColor = false;
             checkBox_toPay.CheckedChanged += checkBox_toPay_CheckedChanged;
             // 
             // checkBox_toSend
             // 
-            checkBox_toSend.AutoSize = true;
+            resources.ApplyResources(checkBox_toSend, "checkBox_toSend");
             checkBox_toSend.BackColor = Color.Transparent;
             checkBox_toSend.ForeColor = SystemColors.ControlLightLight;
-            checkBox_toSend.Location = new Point(212, 92);
             checkBox_toSend.Name = "checkBox_toSend";
-            checkBox_toSend.Size = new Size(82, 19);
-            checkBox_toSend.TabIndex = 6;
-            checkBox_toSend.Text = "A expédier";
             checkBox_toSend.UseVisualStyleBackColor = false;
             checkBox_toSend.CheckedChanged += checkBox_toSend_CheckedChanged;
             // 
             // lb_selectedOrderInfo
             // 
             lb_selectedOrderInfo.BackColor = Color.Transparent;
-            lb_selectedOrderInfo.Enabled = false;
-            lb_selectedOrderInfo.Font = new Font("Microsoft Sans Serif", 12F);
+            resources.ApplyResources(lb_selectedOrderInfo, "lb_selectedOrderInfo");
             lb_selectedOrderInfo.ForeColor = SystemColors.ControlLightLight;
-            lb_selectedOrderInfo.Location = new Point(363, 47);
             lb_selectedOrderInfo.Name = "lb_selectedOrderInfo";
-            lb_selectedOrderInfo.Size = new Size(220, 44);
-            lb_selectedOrderInfo.TabIndex = 7;
-            lb_selectedOrderInfo.Text = "Informations de la commande sélectionnée";
-            lb_selectedOrderInfo.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // groupBox_client
+            // 
+            groupBox_client.Controls.Add(lb_client_phone);
+            groupBox_client.Controls.Add(lb_phone_title);
+            groupBox_client.Controls.Add(lb_client_email);
+            groupBox_client.Controls.Add(lb_mail_title);
+            groupBox_client.Controls.Add(lb_city);
+            groupBox_client.Controls.Add(lb_postalCode);
+            groupBox_client.Controls.Add(lb_address);
+            groupBox_client.Controls.Add(lb_name);
+            groupBox_client.Controls.Add(lb_lastName);
+            groupBox_client.Controls.Add(lb_civility);
+            resources.ApplyResources(groupBox_client, "groupBox_client");
+            groupBox_client.ForeColor = Color.OrangeRed;
+            groupBox_client.Name = "groupBox_client";
+            groupBox_client.TabStop = false;
+            // 
+            // lb_client_phone
+            // 
+            resources.ApplyResources(lb_client_phone, "lb_client_phone");
+            lb_client_phone.Name = "lb_client_phone";
+            // 
+            // lb_phone_title
+            // 
+            resources.ApplyResources(lb_phone_title, "lb_phone_title");
+            lb_phone_title.Name = "lb_phone_title";
+            // 
+            // lb_client_email
+            // 
+            resources.ApplyResources(lb_client_email, "lb_client_email");
+            lb_client_email.Name = "lb_client_email";
+            // 
+            // lb_mail_title
+            // 
+            resources.ApplyResources(lb_mail_title, "lb_mail_title");
+            lb_mail_title.Name = "lb_mail_title";
+            // 
+            // lb_city
+            // 
+            resources.ApplyResources(lb_city, "lb_city");
+            lb_city.Name = "lb_city";
+            // 
+            // lb_postalCode
+            // 
+            resources.ApplyResources(lb_postalCode, "lb_postalCode");
+            lb_postalCode.Name = "lb_postalCode";
+            // 
+            // lb_address
+            // 
+            resources.ApplyResources(lb_address, "lb_address");
+            lb_address.Name = "lb_address";
+            // 
+            // lb_name
+            // 
+            resources.ApplyResources(lb_name, "lb_name");
+            lb_name.Name = "lb_name";
+            // 
+            // lb_lastName
+            // 
+            resources.ApplyResources(lb_lastName, "lb_lastName");
+            lb_lastName.Name = "lb_lastName";
+            // 
+            // lb_civility
+            // 
+            resources.ApplyResources(lb_civility, "lb_civility");
+            lb_civility.Name = "lb_civility";
             // 
             // fmOrders
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.background;
-            ClientSize = new Size(953, 641);
+            Controls.Add(groupBox_client);
             Controls.Add(lb_selectedOrderInfo);
             Controls.Add(checkBox_toSend);
             Controls.Add(checkBox_toPay);
@@ -165,10 +219,10 @@
             Controls.Add(ordersDataGridView);
             Controls.Add(lb_title);
             FormBorderStyle = FormBorderStyle.Fixed3D;
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "fmOrders";
-            Text = "Gestion des commandes";
             ((System.ComponentModel.ISupportInitialize)ordersDataGridView).EndInit();
+            groupBox_client.ResumeLayout(false);
+            groupBox_client.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -183,5 +237,16 @@
         private CheckBox checkBox_toPay;
         private CheckBox checkBox_toSend;
         private Label lb_selectedOrderInfo;
+        private GroupBox groupBox_client;
+        private Label lb_postalCode;
+        private Label lb_address;
+        private Label lb_name;
+        private Label lb_lastName;
+        private Label lb_civility;
+        private Label lb_client_phone;
+        private Label lb_phone_title;
+        private Label lb_client_email;
+        private Label lb_mail_title;
+        private Label lb_city;
     }
 }
