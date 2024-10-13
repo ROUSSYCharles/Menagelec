@@ -1,5 +1,6 @@
 ﻿using Menagelec.Entities;
 using Menagelec.src.Models;
+using Org.BouncyCastle.Asn1.BC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,14 +21,36 @@ namespace Menagelec.Forms
         {
             InitializeComponent();
 
-            // DataGridView
-            DataTable orderDataTable = createOrderDt(allOrders);
-            this.ordersDataGridView.DataSource = orderDataTable;
-            lb_orderCount.Text = $"Nombre d'éléments :   {allOrders.Count()}";
-            // groupBox_client
-            ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
-            this.getOrderClientInformations();
+            // DataGridView DataSource selon la liste de commandes
+            this.setOrderDataSource(allOrders);
+            // Infos sur la commande sélectionnée
+            this.getAllSelectedOrderInfo();
 
+        }
+
+        // MaJ du DataSource de la grid commande
+        private void setOrderDataSource(List<Order> filteredOrderList)
+        {
+            // On initialise un DataTable avec la liste de commandes filtrée
+            DataTable newOrderDt = createOrderDt(filteredOrderList);
+            this.ordersDataGridView.DataSource = newOrderDt;
+            // Compteur de commande
+            lb_orderCount.Text = $"Nombre d'éléments :   {newOrderDt.Rows.Count}";
+            // Sélection de la 1ère commande de la grid
+            this.ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
+        }
+
+        // Obtenir toutes les informations sur la commande sélectionnée
+        private void getAllSelectedOrderInfo()
+        {
+            // selected order infos
+            Order selectedOrder = OrderModel.findOrderById(int.Parse(this.ordersDataGridView.CurrentCell.Value.ToString()));
+            this.getOrderClientInformations(selectedOrder);
+            this.getOrderInformations(selectedOrder);
+            // references
+            DataTable referencesDt = createOrderRowDtByOrder(selectedOrder);
+            this.orderRowsDataGridView.DataSource = referencesDt;
+            lb_orderRowsCount.Text = $"Nombre de références dans la commande : {referencesDt.Rows.Count}";
         }
         
         // Créer DataTable pour les commandes en fonction d'une liste selon le filtre
@@ -44,11 +67,24 @@ namespace Menagelec.Forms
 
             return orderDataTable;
         }
+        // Créer DataTable pour les références de la commande sélectionnée
+        private DataTable createOrderRowDtByOrder(Order order)
+        {
+            DataTable orderRowsDataTable = new DataTable();
+            orderRowsDataTable.Columns.Add("Produit commandé");
+            orderRowsDataTable.Columns.Add("Quantité");
+
+            List<OrderRow> selectedOrderReferences = OrderRowModel.findAllByOrder(order);
+            foreach (OrderRow reference in selectedOrderReferences)
+            {
+                orderRowsDataTable.Rows.Add(reference.getProduct().getId(), reference.getQuantity());
+            }
+            return orderRowsDataTable;
+        }
 
         // Obtenir les informations du client de la commande sélectionnée
-        private void getOrderClientInformations()
+        private void getOrderClientInformations(Order selectedOrder)
         {
-            Order selectedOrder = OrderModel.findOrderById(int.Parse(this.ordersDataGridView.CurrentCell.Value.ToString()));
             groupBox_client.Text = $"client {selectedOrder.getClient().getId()}";
             lb_civility.Text = selectedOrder.getClient().getCivility();
             lb_lastName.Text = selectedOrder.getClient().getLastName();
@@ -58,6 +94,15 @@ namespace Menagelec.Forms
             lb_city.Text = selectedOrder.getClient().getCity();
             lb_client_email.Text = selectedOrder.getClient().getEmail();
             lb_client_phone.Text = selectedOrder.getClient().getPhone();
+        }
+
+        private void getOrderInformations(Order selectedOrder)
+        {
+            groupBox_order.Text = $"Commande n° {selectedOrder.getId()}";
+            lb_order_date.Text = selectedOrder.getDate().ToString();
+            pictureBox_isPayed.Image =  selectedOrder.isPayed() ? Properties.Resources.etatOk : Properties.Resources.etatNotOk;
+            pictureBox_isExpedited.Image =  selectedOrder.isExpedited() ? Properties.Resources.etatOk : Properties.Resources.etatNotOk;
+            
         }
 
         private void FmOrders_FormClosed(object sender, FormClosedEventArgs e)
@@ -72,8 +117,7 @@ namespace Menagelec.Forms
             // Lorsque la cellule d'une commande est cliqué
             if (ordersDataGridView.CurrentCell.ColumnIndex == 0 ) 
             {
-                // On remplit la groupBox_client
-                this.getOrderClientInformations();
+                this.getAllSelectedOrderInfo();
             }
         }
 
@@ -84,12 +128,9 @@ namespace Menagelec.Forms
                 checkBox_toPay.Checked = false;
                 checkBox_toSend.Checked = false;
 
-                DataTable orderDataTable = createOrderDt(allOrders);
-                this.ordersDataGridView.DataSource = orderDataTable;
-                lb_orderCount.Text = $"Nombre d'éléments :   {allOrders.Count()}";
-                ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
+                this.setOrderDataSource(allOrders);
 
-                this.getOrderClientInformations();
+                this.getAllSelectedOrderInfo();
             }
         }
 
@@ -108,12 +149,10 @@ namespace Menagelec.Forms
                         allOrdersToPay.Add(order);
                     }
                 }
-                DataTable orderToPayDt = createOrderDt(allOrdersToPay);
-                this.ordersDataGridView.DataSource = orderToPayDt;
-                lb_orderCount.Text = $"Nombre d'éléments :   {allOrdersToPay.Count()}";
-                ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
 
-                this.getOrderClientInformations();
+                this.setOrderDataSource(allOrdersToPay);
+
+                this.getAllSelectedOrderInfo();
             }
         }
 
@@ -127,17 +166,15 @@ namespace Menagelec.Forms
                 List<Order> allOrdersToSend = new List<Order>();
                 foreach (Order order in allOrders)
                 {
-                    if (!order.isExpedited())
+                    if (!order.isExpedited() && order.isPayed())
                     {
                         allOrdersToSend.Add(order);
                     }
                 }
-                DataTable orderToPayDt = createOrderDt(allOrdersToSend);
-                this.ordersDataGridView.DataSource = orderToPayDt;
-                lb_orderCount.Text = $"Nombre d'éléments :   {allOrdersToSend.Count()}";
-                ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
 
-                this.getOrderClientInformations();
+                this.setOrderDataSource(allOrdersToSend);
+
+                this.getAllSelectedOrderInfo();
             }
         }
     }

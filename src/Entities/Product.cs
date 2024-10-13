@@ -8,10 +8,10 @@ namespace Menagelec.Entities
 {
     public class Product : AbstractEntity<Product>
     {
-        private readonly int _id;
+        private int _id;
         private string _designation;
         private string _description;
-        private readonly DateTime _createdAt;
+        private DateTime _createdAt;
         private int _stock;
         private double _price;
         private string _imageFilePath;
@@ -19,6 +19,11 @@ namespace Menagelec.Entities
         public Product() {}
 
         public int getId() { return this._id; }
+        public Product setId(int id)
+        {
+            this._id = id;
+            return this;
+        }
 
         public string getDesignation() { return this._designation; }
         public Product setDesignation(string designation)
@@ -35,6 +40,11 @@ namespace Menagelec.Entities
         }
 
         public DateTime getCreatedAt() { return this._createdAt; }
+        public Product setCreatedAt(DateTime createdAt)
+        {
+            this._createdAt = createdAt;
+            return this;
+        }
         
         public int getStock() { return this._stock; }
         public Product setStock(int stock)

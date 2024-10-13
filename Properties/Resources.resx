@@ -118,16 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="1394462228_Silver_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\imagesInterfaceGraphique\1394462228_Silver_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\imagesInterfaceGraphique\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="etatNotOk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\etatNotOk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="commande_impayee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\imagesInterfaceGraphique\commande_impayee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo_menagelec" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\imagesInterfaceGraphique\logo_menagelec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1394462228_Silver_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\imagesInterfaceGraphique\1394462228_Silver_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="commande_impayee" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\imagesInterfaceGraphique\commande_impayee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="etatOk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\etatOk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

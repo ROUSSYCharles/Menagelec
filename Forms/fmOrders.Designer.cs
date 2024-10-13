@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmOrders));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lb_title = new Label();
             ordersDataGridView = new DataGridView();
             lb_orderCount = new Label();
@@ -49,8 +50,21 @@
             lb_name = new Label();
             lb_lastName = new Label();
             lb_civility = new Label();
+            groupBox_order = new GroupBox();
+            pictureBox_isExpedited = new PictureBox();
+            lb_expedition = new Label();
+            pictureBox_isPayed = new PictureBox();
+            lb_paiement = new Label();
+            lb_order_date = new Label();
+            lb_date = new Label();
+            lb_orderRowsCount = new Label();
+            orderRowsDataGridView = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)ordersDataGridView).BeginInit();
             groupBox_client.SuspendLayout();
+            groupBox_order.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_isExpedited).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_isPayed).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)orderRowsDataGridView).BeginInit();
             SuspendLayout();
             // 
             // lb_title
@@ -69,6 +83,7 @@
             ordersDataGridView.AllowUserToResizeRows = false;
             ordersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ordersDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            ordersDataGridView.BackgroundColor = SystemColors.ControlLightLight;
             ordersDataGridView.BorderStyle = BorderStyle.Fixed3D;
             ordersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -204,11 +219,95 @@
             resources.ApplyResources(lb_civility, "lb_civility");
             lb_civility.Name = "lb_civility";
             // 
+            // groupBox_order
+            // 
+            groupBox_order.Controls.Add(pictureBox_isExpedited);
+            groupBox_order.Controls.Add(lb_expedition);
+            groupBox_order.Controls.Add(pictureBox_isPayed);
+            groupBox_order.Controls.Add(lb_paiement);
+            groupBox_order.Controls.Add(lb_order_date);
+            groupBox_order.Controls.Add(lb_date);
+            resources.ApplyResources(groupBox_order, "groupBox_order");
+            groupBox_order.ForeColor = Color.OrangeRed;
+            groupBox_order.Name = "groupBox_order";
+            groupBox_order.TabStop = false;
+            // 
+            // pictureBox_isExpedited
+            // 
+            pictureBox_isExpedited.Image = Properties.Resources.etatOk;
+            resources.ApplyResources(pictureBox_isExpedited, "pictureBox_isExpedited");
+            pictureBox_isExpedited.Name = "pictureBox_isExpedited";
+            pictureBox_isExpedited.TabStop = false;
+            // 
+            // lb_expedition
+            // 
+            resources.ApplyResources(lb_expedition, "lb_expedition");
+            lb_expedition.Name = "lb_expedition";
+            // 
+            // pictureBox_isPayed
+            // 
+            pictureBox_isPayed.Image = Properties.Resources.etatNotOk;
+            resources.ApplyResources(pictureBox_isPayed, "pictureBox_isPayed");
+            pictureBox_isPayed.Name = "pictureBox_isPayed";
+            pictureBox_isPayed.TabStop = false;
+            // 
+            // lb_paiement
+            // 
+            resources.ApplyResources(lb_paiement, "lb_paiement");
+            lb_paiement.Name = "lb_paiement";
+            // 
+            // lb_order_date
+            // 
+            resources.ApplyResources(lb_order_date, "lb_order_date");
+            lb_order_date.Name = "lb_order_date";
+            // 
+            // lb_date
+            // 
+            resources.ApplyResources(lb_date, "lb_date");
+            lb_date.Name = "lb_date";
+            // 
+            // lb_orderRowsCount
+            // 
+            resources.ApplyResources(lb_orderRowsCount, "lb_orderRowsCount");
+            lb_orderRowsCount.BackColor = Color.Transparent;
+            lb_orderRowsCount.ForeColor = SystemColors.ControlLightLight;
+            lb_orderRowsCount.Name = "lb_orderRowsCount";
+            // 
+            // orderRowsDataGridView
+            // 
+            orderRowsDataGridView.AllowUserToAddRows = false;
+            orderRowsDataGridView.AllowUserToDeleteRows = false;
+            orderRowsDataGridView.AllowUserToOrderColumns = true;
+            orderRowsDataGridView.AllowUserToResizeColumns = false;
+            orderRowsDataGridView.AllowUserToResizeRows = false;
+            orderRowsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            orderRowsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            orderRowsDataGridView.BackgroundColor = SystemColors.ControlLightLight;
+            orderRowsDataGridView.BorderStyle = BorderStyle.Fixed3D;
+            orderRowsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 8F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.OrangeRed;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            orderRowsDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(orderRowsDataGridView, "orderRowsDataGridView");
+            orderRowsDataGridView.MultiSelect = false;
+            orderRowsDataGridView.Name = "orderRowsDataGridView";
+            orderRowsDataGridView.ReadOnly = true;
+            orderRowsDataGridView.RowHeadersVisible = false;
+            orderRowsDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            // 
             // fmOrders
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.background;
+            Controls.Add(orderRowsDataGridView);
+            Controls.Add(lb_orderRowsCount);
+            Controls.Add(groupBox_order);
             Controls.Add(groupBox_client);
             Controls.Add(lb_selectedOrderInfo);
             Controls.Add(checkBox_toSend);
@@ -223,6 +322,11 @@
             ((System.ComponentModel.ISupportInitialize)ordersDataGridView).EndInit();
             groupBox_client.ResumeLayout(false);
             groupBox_client.PerformLayout();
+            groupBox_order.ResumeLayout(false);
+            groupBox_order.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_isExpedited).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_isPayed).EndInit();
+            ((System.ComponentModel.ISupportInitialize)orderRowsDataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,5 +352,14 @@
         private Label lb_client_email;
         private Label lb_mail_title;
         private Label lb_city;
+        private GroupBox groupBox_order;
+        private Label lb_paiement;
+        private Label lb_order_date;
+        private Label lb_date;
+        private PictureBox pictureBox_isExpedited;
+        private Label lb_expedition;
+        private PictureBox pictureBox_isPayed;
+        private Label lb_orderRowsCount;
+        private DataGridView orderRowsDataGridView;
     }
 }
