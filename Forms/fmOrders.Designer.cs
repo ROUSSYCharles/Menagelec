@@ -381,6 +381,7 @@
             Controls.Add(ordersDataGridView);
             Controls.Add(lb_title);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
             Name = "fmOrders";
             ((System.ComponentModel.ISupportInitialize)ordersDataGridView).EndInit();
             groupBox_client.ResumeLayout(false);

@@ -65,7 +65,9 @@
             Controls.Add(lb_orders);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "fmMenu";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Menagelec - Menu";
             ResumeLayout(false);
             PerformLayout();

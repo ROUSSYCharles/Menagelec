@@ -118,7 +118,9 @@
             ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "fmLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Menagelec - Accès à l'application";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
