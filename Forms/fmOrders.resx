@@ -147,7 +147,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_title.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>18</value>
   </data>
   <data name="ordersDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 141</value>
@@ -168,7 +168,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ordersDataGridView.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>17</value>
   </data>
   <data name="lb_orderCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -198,7 +198,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_orderCount.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>16</value>
   </data>
   <data name="lb_orderList.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -228,7 +228,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_orderList.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>15</value>
   </data>
   <data name="checkBox_all.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -258,7 +258,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_all.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>14</value>
   </data>
   <data name="checkBox_toPay.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -288,7 +288,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_toPay.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>13</value>
   </data>
   <data name="checkBox_toSend.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -318,7 +318,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_toSend.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>12</value>
   </data>
   <data name="lb_selectedOrderInfo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -348,7 +348,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_selectedOrderInfo.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>11</value>
   </data>
   <data name="lb_client_phone.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -667,7 +667,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox_client.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>10</value>
   </data>
   <data name="pictureBox_isExpedited.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
@@ -865,7 +865,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox_order.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>9</value>
   </data>
   <data name="lb_orderRowsCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -898,7 +898,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_orderRowsCount.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>8</value>
   </data>
   <data name="orderRowsDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>357, 453</value>
@@ -919,7 +919,205 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;orderRowsDataGridView.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lb_search.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lb_search.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="lb_search.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="lb_search.Location" type="System.Drawing.Point, System.Drawing">
+    <value>771, 57</value>
+  </data>
+  <data name="lb_search.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 20</value>
+  </data>
+  <data name="lb_search.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="lb_search.Text" xml:space="preserve">
+    <value>Recherche spécifique</value>
+  </data>
+  <data name="&gt;&gt;lb_search.Name" xml:space="preserve">
+    <value>lb_search</value>
+  </data>
+  <data name="&gt;&gt;lb_search.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lb_search.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lb_search.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lb_search_client.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lb_search_client.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="lb_search_client.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="lb_search_client.Location" type="System.Drawing.Point, System.Drawing">
+    <value>759, 107</value>
+  </data>
+  <data name="lb_search_client.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 13</value>
+  </data>
+  <data name="lb_search_client.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="lb_search_client.Text" xml:space="preserve">
+    <value>Rechercher un client</value>
+  </data>
+  <data name="&gt;&gt;lb_search_client.Name" xml:space="preserve">
+    <value>lb_search_client</value>
+  </data>
+  <data name="&gt;&gt;lb_search_client.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lb_search_client.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lb_search_client.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBox_search_client.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="textBox_search_client.Location" type="System.Drawing.Point, System.Drawing">
+    <value>759, 122</value>
+  </data>
+  <data name="textBox_search_client.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="textBox_search_client.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;textBox_search_client.Name" xml:space="preserve">
+    <value>textBox_search_client</value>
+  </data>
+  <data name="&gt;&gt;textBox_search_client.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_search_client.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBox_search_client.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBox_search_client.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_search_client.Location" type="System.Drawing.Point, System.Drawing">
+    <value>940, 125</value>
+  </data>
+  <data name="checkBox_search_client.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="checkBox_search_client.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;checkBox_search_client.Name" xml:space="preserve">
+    <value>checkBox_search_client</value>
+  </data>
+  <data name="&gt;&gt;checkBox_search_client.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_search_client.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_search_client.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBox_search_order.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_search_order.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="checkBox_search_order.Location" type="System.Drawing.Point, System.Drawing">
+    <value>940, 175</value>
+  </data>
+  <data name="checkBox_search_order.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="checkBox_search_order.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;checkBox_search_order.Name" xml:space="preserve">
+    <value>checkBox_search_order</value>
+  </data>
+  <data name="&gt;&gt;checkBox_search_order.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_search_order.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_search_order.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="textBox_search_order.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="textBox_search_order.Location" type="System.Drawing.Point, System.Drawing">
+    <value>759, 172</value>
+  </data>
+  <data name="textBox_search_order.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="textBox_search_order.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;textBox_search_order.Name" xml:space="preserve">
+    <value>textBox_search_order</value>
+  </data>
+  <data name="&gt;&gt;textBox_search_order.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_search_order.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBox_search_order.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lb_search_order.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lb_search_order.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="lb_search_order.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="lb_search_order.Location" type="System.Drawing.Point, System.Drawing">
+    <value>759, 157</value>
+  </data>
+  <data name="lb_search_order.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 13</value>
+  </data>
+  <data name="lb_search_order.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="lb_search_order.Text" xml:space="preserve">
+    <value>Rechercher une commande</value>
+  </data>
+  <data name="&gt;&gt;lb_search_order.Name" xml:space="preserve">
+    <value>lb_search_order</value>
+  </data>
+  <data name="&gt;&gt;lb_search_order.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lb_search_order.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lb_search_order.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

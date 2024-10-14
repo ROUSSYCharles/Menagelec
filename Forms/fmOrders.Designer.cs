@@ -59,6 +59,13 @@
             lb_date = new Label();
             lb_orderRowsCount = new Label();
             orderRowsDataGridView = new DataGridView();
+            lb_search = new Label();
+            lb_search_client = new Label();
+            textBox_search_client = new TextBox();
+            checkBox_search_client = new CheckBox();
+            checkBox_search_order = new CheckBox();
+            textBox_search_order = new TextBox();
+            lb_search_order = new Label();
             ((System.ComponentModel.ISupportInitialize)ordersDataGridView).BeginInit();
             groupBox_client.SuspendLayout();
             groupBox_order.SuspendLayout();
@@ -300,11 +307,65 @@
             orderRowsDataGridView.RowHeadersVisible = false;
             orderRowsDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
             // 
+            // lb_search
+            // 
+            resources.ApplyResources(lb_search, "lb_search");
+            lb_search.BackColor = Color.Transparent;
+            lb_search.ForeColor = SystemColors.ControlLightLight;
+            lb_search.Name = "lb_search";
+            // 
+            // lb_search_client
+            // 
+            resources.ApplyResources(lb_search_client, "lb_search_client");
+            lb_search_client.BackColor = Color.Transparent;
+            lb_search_client.ForeColor = SystemColors.ControlLightLight;
+            lb_search_client.Name = "lb_search_client";
+            // 
+            // textBox_search_client
+            // 
+            resources.ApplyResources(textBox_search_client, "textBox_search_client");
+            textBox_search_client.Name = "textBox_search_client";
+            // 
+            // checkBox_search_client
+            // 
+            resources.ApplyResources(checkBox_search_client, "checkBox_search_client");
+            checkBox_search_client.BackColor = Color.Transparent;
+            checkBox_search_client.Name = "checkBox_search_client";
+            checkBox_search_client.UseVisualStyleBackColor = false;
+            checkBox_search_client.CheckedChanged += checkBox_search_client_CheckedChanged;
+            // 
+            // checkBox_search_order
+            // 
+            resources.ApplyResources(checkBox_search_order, "checkBox_search_order");
+            checkBox_search_order.BackColor = Color.Transparent;
+            checkBox_search_order.Name = "checkBox_search_order";
+            checkBox_search_order.UseVisualStyleBackColor = false;
+            checkBox_search_order.CheckedChanged += checkBox_search_order_CheckedChanged;
+            // 
+            // textBox_search_order
+            // 
+            resources.ApplyResources(textBox_search_order, "textBox_search_order");
+            textBox_search_order.Name = "textBox_search_order";
+            // 
+            // lb_search_order
+            // 
+            resources.ApplyResources(lb_search_order, "lb_search_order");
+            lb_search_order.BackColor = Color.Transparent;
+            lb_search_order.ForeColor = SystemColors.ControlLightLight;
+            lb_search_order.Name = "lb_search_order";
+            // 
             // fmOrders
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.background;
+            Controls.Add(checkBox_search_order);
+            Controls.Add(textBox_search_order);
+            Controls.Add(lb_search_order);
+            Controls.Add(checkBox_search_client);
+            Controls.Add(textBox_search_client);
+            Controls.Add(lb_search_client);
+            Controls.Add(lb_search);
             Controls.Add(orderRowsDataGridView);
             Controls.Add(lb_orderRowsCount);
             Controls.Add(groupBox_order);
@@ -361,5 +422,12 @@
         private PictureBox pictureBox_isPayed;
         private Label lb_orderRowsCount;
         private DataGridView orderRowsDataGridView;
+        private Label lb_search;
+        private Label lb_search_client;
+        private TextBox textBox_search_client;
+        private CheckBox checkBox_search_client;
+        private CheckBox checkBox_search_order;
+        private TextBox textBox_search_order;
+        private Label lb_search_order;
     }
 }

@@ -74,17 +74,19 @@
             // 
             // tb_username
             // 
+            tb_username.Font = new Font("Microsoft Sans Serif", 8F);
             tb_username.Location = new Point(461, 99);
             tb_username.Name = "tb_username";
-            tb_username.Size = new Size(235, 23);
+            tb_username.Size = new Size(235, 20);
             tb_username.TabIndex = 3;
             // 
             // tb_password
             // 
+            tb_password.Font = new Font("Microsoft Sans Serif", 8F);
             tb_password.Location = new Point(461, 194);
             tb_password.Name = "tb_password";
             tb_password.PasswordChar = '*';
-            tb_password.Size = new Size(235, 23);
+            tb_password.Size = new Size(235, 20);
             tb_password.TabIndex = 4;
             tb_password.UseSystemPasswordChar = true;
             // 
