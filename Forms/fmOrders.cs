@@ -108,7 +108,14 @@ namespace Menagelec.Forms
             this.ordersDataGridView.DefaultCellStyle.SelectionForeColor = Color.White;
             // Lorsque la cellule d'une commande est cliqué
             if (ordersDataGridView.CurrentCell.ColumnIndex == 0 || ordersDataGridView.CurrentCell.ColumnIndex == 2)
-            {
+            {   /*
+                if (ordersDataGridView.DataSource != allOrders)
+                {
+                    this.setOrderDataSource(allOrders);
+                    if(isClientSearch()) this.resetSearchClient();
+                    if(isOrderSearch()) this.resetSearchOrder();
+                };
+                */
                 this.ordersDataGridView.CurrentCell = ordersDataGridView.Rows[this.ordersDataGridView.CurrentCell.RowIndex].Cells[0];
                 this.getAllSelectedOrderInfo();
             }
