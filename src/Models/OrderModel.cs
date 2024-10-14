@@ -63,7 +63,7 @@ namespace Menagelec.src.Models
             return orders;
         }
 
-        public static Order findOrderById(int id)
+        public static Order findOrderById(int? id)
         {
             MySqlConnection connection = connect();
             MySqlCommand command = connection.CreateCommand();

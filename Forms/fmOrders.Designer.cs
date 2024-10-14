@@ -325,6 +325,7 @@
             // 
             resources.ApplyResources(textBox_search_client, "textBox_search_client");
             textBox_search_client.Name = "textBox_search_client";
+            textBox_search_client.TextChanged += textBox_search_client_TextChanged;
             // 
             // checkBox_search_client
             // 
@@ -346,6 +347,7 @@
             // 
             resources.ApplyResources(textBox_search_order, "textBox_search_order");
             textBox_search_order.Name = "textBox_search_order";
+            textBox_search_order.TextChanged += textBox_search_order_TextChanged;
             // 
             // lb_search_order
             // 

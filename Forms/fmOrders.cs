@@ -28,13 +28,14 @@ namespace Menagelec.Forms
             // Compteur de commande
             lb_orderCount.Text = $"Nombre d'éléments :   {newOrderDt.Rows.Count}";
             // Sélection de la 1ère commande de la grid
-            this.ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
+            if (newOrderDt.Rows.Count > 0) { this.ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0]; }
         }
 
         // Obtenir toutes les informations sur la commande sélectionnée (Client, Commande, Réferences)
         private void getAllSelectedOrderInfo()
         {
-            // selected order infos
+            // selected order info
+            if (this.ordersDataGridView.CurrentCell == null) return;
             Order selectedOrder = OrderModel.findOrderById(int.Parse(this.ordersDataGridView.CurrentCell.Value.ToString()));
             this.getOrderClientInformations(selectedOrder);
             this.getOrderInformations(selectedOrder);
@@ -106,143 +107,246 @@ namespace Menagelec.Forms
             this.ordersDataGridView.DefaultCellStyle.SelectionBackColor = Color.OrangeRed;
             this.ordersDataGridView.DefaultCellStyle.SelectionForeColor = Color.White;
             // Lorsque la cellule d'une commande est cliqué
-            if (ordersDataGridView.CurrentCell.ColumnIndex == 0)
+            if (ordersDataGridView.CurrentCell.ColumnIndex == 0 || ordersDataGridView.CurrentCell.ColumnIndex == 2)
             {
+                this.ordersDataGridView.CurrentCell = ordersDataGridView.Rows[this.ordersDataGridView.CurrentCell.RowIndex].Cells[0];
                 this.getAllSelectedOrderInfo();
             }
         }
 
+        // filtre "Tout"
         private void checkBox_all_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_all.Checked)
+            if (!checkBox_all.Checked) return;
+
+            checkBox_toPay.Checked = false;
+            checkBox_toSend.Checked = false;
+
+            // Afficher toutes les commandes de la recherche
+            if (isOrderSearch())
             {
-                checkBox_toPay.Checked = false;
-                checkBox_toSend.Checked = false;
-
-                this.setOrderDataSource(allOrders);
-
+                this.setOrderDataSource(getSearchedOrder());
                 this.getAllSelectedOrderInfo();
+                return;
             }
+            if (isClientSearch())
+            {
+                this.setOrderDataSource(getSearchClient());
+                this.getAllSelectedOrderInfo();
+                return;
+            }
+
+            this.setOrderDataSource(allOrders);
+            this.getAllSelectedOrderInfo();
+
         }
 
+        // filtre "à payer"
         private void checkBox_toPay_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_toPay.Checked)
+            if (!checkBox_toPay.Checked) return;
+
+            checkBox_all.Checked = false;
+            checkBox_toSend.Checked = false;
+
+            // Afficher toutes les commande à payer de la recherche
+            if (isOrderSearch())
             {
-                checkBox_all.Checked = false;
-                checkBox_toSend.Checked = false;
-
-                List<Order> allOrdersToPay = new List<Order>();
-                foreach (Order order in allOrders)
-                {
-                    if (!order.isPayed())
-                    {
-                        allOrdersToPay.Add(order);
-                    }
-                }
-
-                this.setOrderDataSource(allOrdersToPay);
-
+                this.setOrderDataSource(getSearchedOrder().Where(order => !order.isPayed()).ToList());
                 this.getAllSelectedOrderInfo();
+                return;
             }
+            if (isClientSearch())
+            {
+                this.setOrderDataSource(getSearchClient().Where(order => !order.isPayed()).ToList());
+                this.getAllSelectedOrderInfo();
+                return;
+            }
+
+            List<Order> allOrdersToPay = allOrders
+                .Where(order => !order.isPayed())
+                .ToList();
+
+            this.setOrderDataSource(allOrdersToPay);
+            this.getAllSelectedOrderInfo();
+
         }
 
+        // filtre "à expédier"
         private void checkBox_toSend_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_toSend.Checked)
+            if (!checkBox_toSend.Checked) return;
+
+            checkBox_all.Checked = false;
+            checkBox_toPay.Checked = false;
+
+            // Afficher toutes les commande à expédier de la recherche
+            if (isOrderSearch())
             {
-                checkBox_all.Checked = false;
-                checkBox_toPay.Checked = false;
-
-                List<Order> allOrdersToSend = new List<Order>();
-                foreach (Order order in allOrders)
-                {
-                    if (!order.isExpedited() && order.isPayed())
-                    {
-                        allOrdersToSend.Add(order);
-                    }
-                }
-
-                this.setOrderDataSource(allOrdersToSend);
-
+                this.setOrderDataSource(getSearchedOrder().Where(order => order.isPayed() && !order.isExpedited()).ToList());
                 this.getAllSelectedOrderInfo();
+                return;
             }
+            if (isClientSearch())
+            {
+                this.setOrderDataSource(getSearchClient().Where(order => order.isPayed() && !order.isExpedited()).ToList());
+                this.getAllSelectedOrderInfo();
+                return;
+            }
+
+            List<Order> allOrdersToSend = allOrders
+                .Where(order => !order.isExpedited() && order.isPayed())
+                .ToList();
+
+            this.setOrderDataSource(allOrdersToSend);
+            this.getAllSelectedOrderInfo();
+
         }
 
         // RECHERCHE SPÉCIFIQUE (Client)
+
+        // Recherche client
+        private List<Order> getSearchClient()
+        {
+            List<Order> ordersList = new List<Order>();
+            // Si input de recherche contient bien un entier
+            if (textBox_search_client.Text != null && int.TryParse(textBox_search_client.Text, out int searchedClientId))
+            {
+                // On désactive l'autre recherche si il y en a une
+                resetSearchOrder();
+
+                // On modifie le DataSource
+                List<Order> ordersListByClientId = allOrders.Where(order => order.getClient().getId() == searchedClientId).ToList();
+                if (ordersListByClientId.Count > 0)
+                {
+
+                    this.setOrderDataSource(ordersListByClientId);
+                    this.getAllSelectedOrderInfo();
+                    textBox_search_client.ForeColor = Color.White;
+                    textBox_search_client.BackColor = Color.Purple;
+                    groupBox_client.ForeColor = Color.Purple;
+                    groupBox_client.Text = "Client (Recherche spécifique)";
+
+                    ordersList = ordersListByClientId;
+                }
+            }
+            return ordersList;
+        }
+
+        // reset recherche d'un client
+        private void resetSearchClient()
+        {
+            checkBox_search_client.Checked = false;
+            textBox_search_client.Text = "";
+        }
+
+        // vérif si recherche d'un client
+        private bool isClientSearch()
+        {
+            if (textBox_search_client.Text != null && int.TryParse(textBox_search_client.Text, out int searchedClientId)) return true;
+            return false;
+        } 
+
+        // Recherche Commande
+        private List<Order> getSearchedOrder()
+        {
+            List<Order> searchedOrderList = new List<Order>();
+            // Si input de recherche contient bien un entier
+            if (textBox_search_order.Text != null && int.TryParse(textBox_search_order.Text, out int searchedOrderId))
+            {
+                // On désactive l'autre recherche si il y en a une
+                resetSearchClient();
+
+                // On modifie le DataSource
+                List<Order> ordersList = allOrders.Where(order => order.getId() == searchedOrderId).ToList();
+                if (ordersList.Count > 0)
+                {
+
+                    this.setOrderDataSource(ordersList);
+                    this.getAllSelectedOrderInfo();
+                    textBox_search_order.ForeColor = Color.White;
+                    textBox_search_order.BackColor = Color.Purple;
+                    groupBox_order.ForeColor = Color.Purple;
+                    groupBox_order.Text = "Commande (Recherche spécifique)";
+
+                    searchedOrderList = ordersList;
+                }
+            }
+            return searchedOrderList;
+        }
+
+        // reset recherche d'une commande
+        private void resetSearchOrder()
+        {
+            checkBox_search_order.Checked = false;
+            textBox_search_order.Text = "";
+        }
+
+        // vérif si recherche d'une commande en cours
+        private bool isOrderSearch()
+        {
+            if (textBox_search_order.Text != null && int.TryParse(textBox_search_order.Text, out int searchedOrderId)) return true;
+            return false;
+        }
+
+        // checkbox recherche d'un client
         private void checkBox_search_client_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_search_client.Checked)
             {
-                // Si input de recherche contient bien un entier
-                if (textBox_search_client.Text != null && int.TryParse(textBox_search_client.Text, out int searchedClientId))
-                {
-                    // On modifie le DataSource
-                    List<Order> ordersListByClientId = OrderModel.findOrdersByClientId(searchedClientId);
-                    if (ordersListByClientId.Count > 0)
-                    {
-                        this.setOrderDataSource(ordersListByClientId);
-                        this.getAllSelectedOrderInfo();
-                        textBox_search_client.ForeColor = Color.White;
-                        textBox_search_client.BackColor = Color.Purple;
-                        groupBox_client.ForeColor = Color.Purple;
-                        groupBox_client.Text = "Client (Recherche spécifique)";
-                    }
-                }
+                this.getSearchClient();
             }
             else if (ordersDataGridView.DataSource != allOrders)
             {
                 this.setOrderDataSource(allOrders);
                 this.getAllSelectedOrderInfo();
+                if (!checkBox_all.Checked)
+                {
+                    checkBox_all.Checked = true;
+                }
+
+                textBox_search_client.ForeColor = Color.Black;
                 textBox_search_client.BackColor = Color.White;
                 groupBox_client.ForeColor = Color.OrangeRed;
             }
         }
 
+        // checkbox recherche d'une commande
         private void checkBox_search_order_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_search_order.Checked)
-            { 
-                if (textBox_search_order.Text != null && int.TryParse(textBox_search_order.Text, out int searchedOrderId))
-                {
-                    Order searchedOrder = OrderModel.findOrderById(searchedOrderId);
-                    if (searchedOrder != null)
-                    {
-                        DataTable searchedOrderDt = new DataTable();
-                        searchedOrderDt.Columns.Add("idCommande");
-                        searchedOrderDt.Columns.Add("date");
-                        searchedOrderDt.Columns.Add("client");
-                        searchedOrderDt.Rows.Add(searchedOrder.getId(), searchedOrder.getDate().ToString("dd/MM/yyyy"), searchedOrder.getClient().getId());
-
-                        this.ordersDataGridView.DataSource = searchedOrderDt;
-                        // Compteur de commande
-                        lb_orderCount.Text = $"Nombre d'éléments :   {searchedOrderDt.Rows.Count}";
-                        // Sélection de la 1ère commande de la grid
-                        this.ordersDataGridView.CurrentCell = ordersDataGridView.Rows[0].Cells[0];
-                        // get Infos sur la commande recherchée
-                        this.getOrderClientInformations(searchedOrder);
-                        this.getOrderInformations(searchedOrder);
-                        // references
-                        DataTable referencesDt = createOrderRowDtByOrder(searchedOrder);
-                        this.orderRowsDataGridView.DataSource = referencesDt;
-                        lb_orderRowsCount.Text = $"Nombre de références dans la commande : {referencesDt.Rows.Count}";
-                        // style recherche
-                        textBox_search_order.ForeColor = Color.White;
-                        textBox_search_order.BackColor = Color.Purple;
-                        groupBox_order.ForeColor = Color.Purple;
-                        groupBox_order.Text = "Commande (Recherche spécifique)";
-                    }
-
-                }
+            {
+                this.getSearchedOrder();
             }
-            else if(ordersDataGridView.DataSource != allOrders)
+            else if (ordersDataGridView.DataSource != allOrders)
             {
                 this.setOrderDataSource(allOrders);
                 this.getAllSelectedOrderInfo();
-
+                if (!checkBox_all.Checked)
+                {
+                    checkBox_all.Checked = true;
+                }
                 textBox_search_order.ForeColor = Color.Black;
                 textBox_search_order.BackColor = Color.White;
                 groupBox_order.ForeColor = Color.OrangeRed;
+            }
+        }
+
+        // update de la recherche d'une commande on key press
+        private void textBox_search_order_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBox_search_order.Checked)
+            {
+                this.getSearchedOrder();
+            }
+        }
+
+        // update de la recherche d'un client on key press
+        private void textBox_search_client_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBox_search_client.Checked)
+            {
+                this.getSearchClient();
             }
         }
     }
