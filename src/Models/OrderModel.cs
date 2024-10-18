@@ -163,5 +163,29 @@ namespace Menagelec.src.Models
             connection.Close();
             return orders;
         }
+
+        public static void payOrderById(int orderId)
+        {
+            MySqlConnection connection = connect();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "UPDATE orders SET isPayed = @isPayed WHERE id = @orderId";
+            command.Parameters.AddWithValue("@isPayed", 1);
+            command.Parameters.AddWithValue("@orderId", orderId);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public static void sendOrderById(int orderId)
+        {
+            MySqlConnection connection = connect();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "UPDATE orders SET isExpedited = @isExpedited WHERE id = @orderId";
+            command.Parameters.AddWithValue("@isExpedited", 1);
+            command.Parameters.AddWithValue("@orderId", orderId);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

@@ -51,6 +51,8 @@
             lb_lastName = new Label();
             lb_civility = new Label();
             groupBox_order = new GroupBox();
+            btn_send = new Button();
+            btn_pay = new Button();
             pictureBox_isExpedited = new PictureBox();
             lb_expedition = new Label();
             pictureBox_isPayed = new PictureBox();
@@ -66,6 +68,8 @@
             checkBox_search_order = new CheckBox();
             textBox_search_order = new TextBox();
             lb_search_order = new Label();
+            lb_documents = new Label();
+            btn_login = new Button();
             ((System.ComponentModel.ISupportInitialize)ordersDataGridView).BeginInit();
             groupBox_client.SuspendLayout();
             groupBox_order.SuspendLayout();
@@ -228,6 +232,8 @@
             // 
             // groupBox_order
             // 
+            groupBox_order.Controls.Add(btn_send);
+            groupBox_order.Controls.Add(btn_pay);
             groupBox_order.Controls.Add(pictureBox_isExpedited);
             groupBox_order.Controls.Add(lb_expedition);
             groupBox_order.Controls.Add(pictureBox_isPayed);
@@ -238,6 +244,22 @@
             groupBox_order.ForeColor = Color.OrangeRed;
             groupBox_order.Name = "groupBox_order";
             groupBox_order.TabStop = false;
+            // 
+            // btn_send
+            // 
+            resources.ApplyResources(btn_send, "btn_send");
+            btn_send.ForeColor = Color.SeaGreen;
+            btn_send.Name = "btn_send";
+            btn_send.UseVisualStyleBackColor = true;
+            btn_send.Click += btn_send_Click;
+            // 
+            // btn_pay
+            // 
+            resources.ApplyResources(btn_pay, "btn_pay");
+            btn_pay.ForeColor = Color.SeaGreen;
+            btn_pay.Name = "btn_pay";
+            btn_pay.UseVisualStyleBackColor = true;
+            btn_pay.Click += btn_pay_Click;
             // 
             // pictureBox_isExpedited
             // 
@@ -306,6 +328,7 @@
             orderRowsDataGridView.ReadOnly = true;
             orderRowsDataGridView.RowHeadersVisible = false;
             orderRowsDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            orderRowsDataGridView.CellClick += orderRowsDataGridView_CellClick;
             // 
             // lb_search
             // 
@@ -356,11 +379,29 @@
             lb_search_order.ForeColor = SystemColors.ControlLightLight;
             lb_search_order.Name = "lb_search_order";
             // 
+            // lb_documents
+            // 
+            resources.ApplyResources(lb_documents, "lb_documents");
+            lb_documents.BackColor = Color.Transparent;
+            lb_documents.ForeColor = SystemColors.ControlLightLight;
+            lb_documents.Name = "lb_documents";
+            // 
+            // btn_login
+            // 
+            btn_login.BackColor = Color.LightGray;
+            resources.ApplyResources(btn_login, "btn_login");
+            btn_login.ForeColor = SystemColors.ActiveCaptionText;
+            btn_login.Name = "btn_login";
+            btn_login.UseVisualStyleBackColor = false;
+            btn_login.Click += generatePDF;
+            // 
             // fmOrders
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.background;
+            Controls.Add(btn_login);
+            Controls.Add(lb_documents);
             Controls.Add(checkBox_search_order);
             Controls.Add(textBox_search_order);
             Controls.Add(lb_search_order);
@@ -432,5 +473,9 @@
         private CheckBox checkBox_search_order;
         private TextBox textBox_search_order;
         private Label lb_search_order;
+        private Label lb_documents;
+        private Button btn_login;
+        private Button btn_send;
+        private Button btn_pay;
     }
 }

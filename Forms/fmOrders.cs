@@ -1,7 +1,12 @@
 ﻿using Menagelec.Entities;
 using Menagelec.src.Models;
 using System.Data;
-
+using System.Diagnostics;
+using iText.Kernel.Pdf;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using System.Runtime.InteropServices;
+using System.Drawing;
 namespace Menagelec.Forms
 {
     public partial class fmOrders : Form
@@ -92,9 +97,14 @@ namespace Menagelec.Forms
         {
             groupBox_order.Text = $"Commande n° {selectedOrder.getId()}";
             lb_order_date.Text = selectedOrder.getDate().ToString();
-            pictureBox_isPayed.Image = selectedOrder.isPayed() ? Properties.Resources.etatOk : Properties.Resources.etatNotOk;
-            pictureBox_isExpedited.Image = selectedOrder.isExpedited() ? Properties.Resources.etatOk : Properties.Resources.etatNotOk;
 
+            pictureBox_isPayed.Image = selectedOrder.isPayed() ? Properties.Resources.etatOk : Properties.Resources.etatNotOk;
+            btn_pay.Visible = !selectedOrder.isPayed();
+            btn_pay.Enabled = !selectedOrder.isPayed();
+
+            pictureBox_isExpedited.Image = selectedOrder.isExpedited() ? Properties.Resources.etatOk : Properties.Resources.etatNotOk;
+            btn_send.Visible = !selectedOrder.isExpedited() && selectedOrder.isPayed();
+            btn_send.Enabled = !selectedOrder.isExpedited() && selectedOrder.isPayed();
         }
 
         private void FmOrders_FormClosed(object sender, FormClosedEventArgs e)
@@ -250,9 +260,9 @@ namespace Menagelec.Forms
         // vérif si recherche d'un client
         private bool isClientSearch()
         {
-            if (textBox_search_client.Text != null && int.TryParse(textBox_search_client.Text, out int searchedClientId)) return true;
+            if (textBox_search_client.Text != null && int.TryParse(textBox_search_client.Text, out int searchedClientId) && checkBox_search_client.Checked) return true;
             return false;
-        } 
+        }
 
         // Recherche Commande
         private List<Order> getSearchedOrder()
@@ -292,7 +302,7 @@ namespace Menagelec.Forms
         // vérif si recherche d'une commande en cours
         private bool isOrderSearch()
         {
-            if (textBox_search_order.Text != null && int.TryParse(textBox_search_order.Text, out int searchedOrderId)) return true;
+            if (textBox_search_order.Text != null && int.TryParse(textBox_search_order.Text, out int searchedOrderId) && checkBox_search_order.Checked) return true;
             return false;
         }
 
@@ -303,10 +313,10 @@ namespace Menagelec.Forms
             {
                 this.getSearchClient();
             }
-            else if (ordersDataGridView.DataSource != allOrders)
+            else
             {
-                this.setOrderDataSource(allOrders);
-                this.getAllSelectedOrderInfo();
+                //this.setOrderDataSource(allOrders);
+                //this.getAllSelectedOrderInfo();
                 if (!checkBox_all.Checked)
                 {
                     checkBox_all.Checked = true;
@@ -325,10 +335,10 @@ namespace Menagelec.Forms
             {
                 this.getSearchedOrder();
             }
-            else if (ordersDataGridView.DataSource != allOrders)
+            else
             {
-                this.setOrderDataSource(allOrders);
-                this.getAllSelectedOrderInfo();
+                //this.setOrderDataSource(allOrders);
+                //this.getAllSelectedOrderInfo();
                 if (!checkBox_all.Checked)
                 {
                     checkBox_all.Checked = true;
@@ -354,6 +364,148 @@ namespace Menagelec.Forms
             if (checkBox_search_client.Checked)
             {
                 this.getSearchClient();
+            }
+        }
+
+        // GENERATE PDF
+        private void generatePDF(object sender, EventArgs e)
+        {
+            // current cell order Id
+            if (ordersDataGridView.CurrentCell == null) return;
+            int orderId = int.Parse(ordersDataGridView.CurrentCell.Value.ToString());
+
+            Order selectedOrder = OrderModel.findOrderById(orderId);
+            selectedOrder.setOrderRows(OrderRowModel.findAllByOrder(selectedOrder));
+
+
+            // Chemin PDF
+            string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            string pdfFilePath = Path.Combine(downloadsPath, $"cmd-{selectedOrder.getId()}.pdf");
+
+            // new Document
+            PdfDocument PdfDocument = new PdfDocument(new PdfWriter(pdfFilePath));
+            iText.Layout.Document document = new iText.Layout.Document(PdfDocument);
+            try
+            {
+
+
+                // Add title
+                document.Add(new Paragraph($"Liste de collisage de la commande n°{selectedOrder.getId()} \n")
+                    .SetFontSize(12)
+                    .SetTextAlignment(TextAlignment.CENTER));
+                // Create table (Product Ref, Designation, Quantity)
+                Table table = new Table(3);
+                table.SetWidth(UnitValue.CreatePercentValue(100));
+
+                // Add table headers
+                table.AddCell("Réf du produit");
+                table.AddCell("Désignation");
+                table.AddCell("Quantité");
+
+                int? allQuantity = 0;
+
+                // On boucle sur chaque orderRow
+                foreach (OrderRow orderRow in selectedOrder.getOrderRows())
+                {
+                    table.AddCell(orderRow.getProduct().getId().ToString());
+                    table.AddCell(orderRow.getProduct().getDesignation());
+                    table.AddCell(orderRow.getQuantity().ToString());
+
+                    allQuantity += orderRow.getQuantity();
+                }
+
+                // Add table to the document
+                document.Add(table);
+
+                document.Add(new Paragraph("Veillez à bien contrôler le contenu du colis à l'aide de cette liste devant le transporteur.")
+                    .SetFontSize(8)
+                    .SetFontColor(iText.Kernel.Colors.ColorConstants.RED)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    );
+
+                document.Add(new Paragraph($"Le colis contient {allQuantity} articles.")
+                    .SetFontSize(12)
+                    );
+
+                MessageBox.Show("PDF généré avec succès.");
+                OpenPDF(pdfFilePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur est survenue lors de la génération du PDF : {ex.Message}");
+            }
+            finally
+            {
+                // Close the document and writer
+                document.Close();
+            }
+        }
+        private void OpenPDF(string filePath)
+        {
+            try
+            {
+                // Cross-platform way to open a file
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    // Windows
+                    Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    // Linux
+                    Process.Start("xdg-open", filePath);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    // macOS
+                    Process.Start("open", filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error while opening PDF: {ex.Message}");
+            }
+        }
+
+        private void btn_pay_Click(object sender, EventArgs e)
+        {
+            Order orderToPay = allOrders.Find(order => order.getId() == int.Parse(ordersDataGridView.CurrentCell.Value.ToString()));
+            orderToPay.setIsPayed(true);
+            OrderModel.payOrderById(orderToPay.getId());
+            checkBox_toSend.Checked = true;
+            foreach (DataGridViewRow row in ordersDataGridView.Rows)
+            {
+                if (int.Parse(row.Cells[0].Value.ToString()) == orderToPay.getId())
+                {
+                    ordersDataGridView.CurrentCell = row.Cells[0];
+                }
+            }
+        }
+
+        private void btn_send_Click(object sender, EventArgs e)
+        {
+            Order orderToSend = allOrders.Find(order => order.getId() == int.Parse(ordersDataGridView.CurrentCell.Value.ToString()));
+            orderToSend.setIsExpedited(true);
+            OrderModel.sendOrderById(orderToSend.getId());
+            checkBox_all.Checked = true;
+            foreach (DataGridViewRow row in ordersDataGridView.Rows)
+            {
+                if (int.Parse(row.Cells[0].Value.ToString()) == orderToSend.getId())
+                {
+                    ordersDataGridView.CurrentCell = row.Cells[0];
+                }
+            }
+        }
+                
+        private void orderRowsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.orderRowsDataGridView.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.OrangeRed;
+            this.orderRowsDataGridView.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            // Lorsque la cellule d'un produit est cliqué
+            if (ordersDataGridView.CurrentCell.ColumnIndex == 0)
+            {
+                fmProduct productForm = new fmProduct(int.Parse(orderRowsDataGridView.CurrentCell.Value.ToString()));
+                productForm.ShowDialog();
             }
         }
     }

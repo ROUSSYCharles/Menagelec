@@ -147,7 +147,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_title.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="ordersDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 141</value>
@@ -168,7 +168,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ordersDataGridView.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="lb_orderCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -198,7 +198,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_orderCount.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="lb_orderList.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -228,7 +228,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_orderList.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="checkBox_all.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -258,7 +258,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_all.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="checkBox_toPay.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -288,7 +288,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_toPay.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="checkBox_toSend.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -318,7 +318,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_toSend.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="lb_selectedOrderInfo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -348,7 +348,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_selectedOrderInfo.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="lb_client_phone.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -667,7 +667,70 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox_client.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
+  </data>
+  <data name="btn_send.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btn_send.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="btn_send.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 68</value>
+  </data>
+  <data name="btn_send.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 23</value>
+  </data>
+  <data name="btn_send.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btn_send.Text" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="btn_send.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btn_send.Name" xml:space="preserve">
+    <value>btn_send</value>
+  </data>
+  <data name="&gt;&gt;btn_send.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_send.Parent" xml:space="preserve">
+    <value>groupBox_order</value>
+  </data>
+  <data name="&gt;&gt;btn_send.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btn_pay.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btn_pay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 44</value>
+  </data>
+  <data name="btn_pay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 23</value>
+  </data>
+  <data name="btn_pay.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btn_pay.Text" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="btn_pay.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btn_pay.Name" xml:space="preserve">
+    <value>btn_pay</value>
+  </data>
+  <data name="&gt;&gt;btn_pay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_pay.Parent" xml:space="preserve">
+    <value>groupBox_order</value>
+  </data>
+  <data name="&gt;&gt;btn_pay.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="pictureBox_isExpedited.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
@@ -694,7 +757,7 @@
     <value>groupBox_order</value>
   </data>
   <data name="&gt;&gt;pictureBox_isExpedited.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="lb_expedition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -724,7 +787,7 @@
     <value>groupBox_order</value>
   </data>
   <data name="&gt;&gt;lb_expedition.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="pictureBox_isPayed.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 49</value>
@@ -748,7 +811,7 @@
     <value>groupBox_order</value>
   </data>
   <data name="&gt;&gt;pictureBox_isPayed.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="lb_paiement.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -778,7 +841,7 @@
     <value>groupBox_order</value>
   </data>
   <data name="&gt;&gt;lb_paiement.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="lb_order_date.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -808,7 +871,7 @@
     <value>groupBox_order</value>
   </data>
   <data name="&gt;&gt;lb_order_date.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="lb_date.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -838,7 +901,7 @@
     <value>groupBox_order</value>
   </data>
   <data name="&gt;&gt;lb_date.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="groupBox_order.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -865,7 +928,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox_order.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="lb_orderRowsCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -898,7 +961,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_orderRowsCount.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="orderRowsDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>357, 453</value>
@@ -919,7 +982,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;orderRowsDataGridView.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="lb_search.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -952,7 +1015,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_search.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="lb_search_client.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -985,7 +1048,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_search_client.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="textBox_search_client.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
@@ -1009,7 +1072,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_search_client.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="checkBox_search_client.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1033,7 +1096,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_search_client.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="checkBox_search_order.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1060,7 +1123,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_search_order.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="textBox_search_order.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
@@ -1084,7 +1147,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_search_order.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="lb_search_order.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1096,7 +1159,7 @@
     <value>Off</value>
   </data>
   <data name="lb_search_order.Location" type="System.Drawing.Point, System.Drawing">
-    <value>759, 157</value>
+    <value>759, 156</value>
   </data>
   <data name="lb_search_order.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 13</value>
@@ -1117,7 +1180,67 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_search_order.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
+  </data>
+  <data name="lb_documents.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lb_documents.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="lb_documents.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="lb_documents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>801, 224</value>
+  </data>
+  <data name="lb_documents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 20</value>
+  </data>
+  <data name="lb_documents.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="lb_documents.Text" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="&gt;&gt;lb_documents.Name" xml:space="preserve">
+    <value>lb_documents</value>
+  </data>
+  <data name="&gt;&gt;lb_documents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lb_documents.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lb_documents.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btn_login.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="btn_login.Location" type="System.Drawing.Point, System.Drawing">
+    <value>759, 261</value>
+  </data>
+  <data name="btn_login.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 40</value>
+  </data>
+  <data name="btn_login.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="btn_login.Text" xml:space="preserve">
+    <value>Liste de colisage</value>
+  </data>
+  <data name="&gt;&gt;btn_login.Name" xml:space="preserve">
+    <value>btn_login</value>
+  </data>
+  <data name="&gt;&gt;btn_login.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_login.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btn_login.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
