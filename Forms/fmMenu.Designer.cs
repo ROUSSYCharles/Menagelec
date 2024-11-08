@@ -67,8 +67,9 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "fmMenu";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Menagelec - Menu";
+            FormClosed += FmMenu_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -122,6 +122,7 @@
             Name = "fmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menagelec - Accès à l'application";
+            FormClosed += fmLogin_FormClosed;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

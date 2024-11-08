@@ -23,7 +23,7 @@ namespace Menagelec.Forms
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            if((tb_username.Text == "fournier" &&  tb_password.Text == "1234") || (tb_username.Text == "hurier" && tb_password.Text == "5678"))
+            if ((tb_username.Text == "fournier" && tb_password.Text == "1234") || (tb_username.Text == "hurier" && tb_password.Text == "5678"))
             {
                 fmMenu formMenu = new fmMenu();
                 formMenu.Show();
