@@ -496,7 +496,7 @@ namespace Menagelec.Forms
                 }
             }
         }
-                
+
         private void orderRowsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.orderRowsDataGridView.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.OrangeRed;
@@ -507,6 +507,13 @@ namespace Menagelec.Forms
                 fmProduct productForm = new fmProduct(int.Parse(orderRowsDataGridView.CurrentCell.Value.ToString()));
                 productForm.ShowDialog();
             }
+        }
+
+        private void btn_menu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            fmMenu menu = new fmMenu();
+            menu.Show();
         }
     }
 }
