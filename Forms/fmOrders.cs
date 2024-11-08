@@ -391,7 +391,7 @@ namespace Menagelec.Forms
 
                 // Add title
                 document.Add(new Paragraph($"Liste de collisage de la commande n°{selectedOrder.getId()} \n")
-                    .SetFontSize(14)
+                    .SetFontSize(12)
                     .SetTextAlignment(TextAlignment.CENTER));
                 // Create table (Product Ref, Designation, Quantity)
                 Table table = new Table(3);
@@ -496,7 +496,7 @@ namespace Menagelec.Forms
                 }
             }
         }
-
+                
         private void orderRowsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.orderRowsDataGridView.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.OrangeRed;
@@ -507,13 +507,6 @@ namespace Menagelec.Forms
                 fmProduct productForm = new fmProduct(int.Parse(orderRowsDataGridView.CurrentCell.Value.ToString()));
                 productForm.ShowDialog();
             }
-        }
-
-        private void btn_menu_Click(object sender, EventArgs e)
-        {
-            fmMenu Menu = new fmMenu();
-            this.Hide();
-            Menu.Show();
         }
     }
 }
