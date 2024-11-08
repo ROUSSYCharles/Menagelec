@@ -220,7 +220,7 @@ namespace Menagelec.Forms
 
         }
 
-        // RECHERCHE SPÉCIFIQUE (Client)
+        // RECHERCHE SPÉCIFIQUE
 
         // Recherche client
         private List<Order> getSearchClient()
@@ -315,8 +315,8 @@ namespace Menagelec.Forms
             }
             else
             {
-                //this.setOrderDataSource(allOrders);
-                //this.getAllSelectedOrderInfo();
+                this.setOrderDataSource(allOrders);
+                this.getAllSelectedOrderInfo();
                 if (!checkBox_all.Checked)
                 {
                     checkBox_all.Checked = true;
@@ -337,8 +337,8 @@ namespace Menagelec.Forms
             }
             else
             {
-                //this.setOrderDataSource(allOrders);
-                //this.getAllSelectedOrderInfo();
+                this.setOrderDataSource(allOrders);
+                this.getAllSelectedOrderInfo();
                 if (!checkBox_all.Checked)
                 {
                     checkBox_all.Checked = true;
@@ -478,6 +478,7 @@ namespace Menagelec.Forms
                 if (int.Parse(row.Cells[0].Value.ToString()) == orderToPay.getId())
                 {
                     ordersDataGridView.CurrentCell = row.Cells[0];
+                    ordersDataGridView_CellClick(ordersDataGridView, new DataGridViewCellEventArgs(0, row.Index));
                 }
             }
         }
@@ -493,6 +494,7 @@ namespace Menagelec.Forms
                 if (int.Parse(row.Cells[0].Value.ToString()) == orderToSend.getId())
                 {
                     ordersDataGridView.CurrentCell = row.Cells[0];
+                    ordersDataGridView_CellClick(ordersDataGridView, new DataGridViewCellEventArgs(0, row.Index));
                 }
             }
         }
@@ -507,6 +509,14 @@ namespace Menagelec.Forms
                 fmProduct productForm = new fmProduct(int.Parse(orderRowsDataGridView.CurrentCell.Value.ToString()));
                 productForm.ShowDialog();
             }
+        }
+
+        private void btn_menu_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            fmMenu menu = new fmMenu();
+            menu.Show();
         }
     }
 }
