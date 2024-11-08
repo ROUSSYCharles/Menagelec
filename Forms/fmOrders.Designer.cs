@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmOrders));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+
             lb_title = new Label();
             ordersDataGridView = new DataGridView();
             lb_orderCount = new Label();
@@ -98,14 +100,16 @@
             ordersDataGridView.BackgroundColor = SystemColors.ControlLightLight;
             ordersDataGridView.BorderStyle = BorderStyle.Fixed3D;
             ordersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 8F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.OrangeRed;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            ordersDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
+
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 8F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.OrangeRed;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            ordersDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+
             resources.ApplyResources(ordersDataGridView, "ordersDataGridView");
             ordersDataGridView.MultiSelect = false;
             ordersDataGridView.Name = "ordersDataGridView";
@@ -315,14 +319,16 @@
             orderRowsDataGridView.BackgroundColor = SystemColors.ControlLightLight;
             orderRowsDataGridView.BorderStyle = BorderStyle.Fixed3D;
             orderRowsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 8F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.OrangeRed;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            orderRowsDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 8F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.OrangeRed;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            orderRowsDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+
             resources.ApplyResources(orderRowsDataGridView, "orderRowsDataGridView");
             orderRowsDataGridView.MultiSelect = false;
             orderRowsDataGridView.Name = "orderRowsDataGridView";
