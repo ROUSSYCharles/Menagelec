@@ -10,11 +10,11 @@ namespace Menagelec.src.Models
 {
     abstract class DatabaseConnection
     {
-        private const string SERVER = "localhost";
-        private const string PORT = "3306";
-        private const string DATABASE = "menageleccsharp";
-        private const string UID = "menagelec";
-        private const string PASSWORD = "MenagelecSIO2024!";
+        private const string SERVER = "host";
+        private const string PORT = "port";
+        private const string DATABASE = "db_name";
+        private const string UID = "db_user";
+        private const string PASSWORD = "password";
 
 
         public static MySqlConnection connect()
